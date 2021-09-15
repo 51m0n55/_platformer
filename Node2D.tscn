@@ -1,0 +1,228 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scripts/KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Area2D.gd" type="Script" id=3]
+[ext_resource path="res://textures/grass.png" type="Texture" id=4]
+[ext_resource path="res://textures/coin.png" type="Texture" id=5]
+[ext_resource path="res://Node2D.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/coin2.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/coin1.gd" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 13.7395, 13.929 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 48.064, 10.776 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 31.3313, 31.3265 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 30.8505, 32.086 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 96, 496 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Player"]
+scale = Vector2( 0.508368, 0.508368 )
+texture = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+smoothing_enabled = true
+smoothing_speed = 0.5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D"]
+
+[node name="Coinz" type="Label" parent="Player/Camera2D/CanvasLayer"]
+margin_left = 40.0
+margin_top = 20.0
+margin_right = 148.0
+margin_bottom = 51.0
+text = "0
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Player/Camera2D/CanvasLayer"]
+position = Vector2( 20, 20 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="Coinz2" type="Label" parent="Player/Camera2D/CanvasLayer"]
+margin_left = 48.0
+margin_top = 20.0
+margin_right = 148.0
+margin_bottom = 51.0
+text = "/2
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="grass" type="StaticBody2D" parent="."]
+position = Vector2( 96, 544 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="grass"]
+position = Vector2( -64, 0 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="grass"]
+texture = ExtResource( 4 )
+
+[node name="Sprite3" type="Sprite" parent="grass"]
+position = Vector2( 64, 0.396851 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grass"]
+position = Vector2( -0.00494385, 0.00814438 )
+scale = Vector2( 2, 3 )
+shape = SubResource( 2 )
+
+[node name="grass2" type="StaticBody2D" parent="."]
+position = Vector2( 320, 480 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="grass2"]
+position = Vector2( -30, 0 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="grass2"]
+position = Vector2( 30, 0 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grass2"]
+scale = Vector2( 2, 1 )
+shape = SubResource( 3 )
+
+[node name="Check0" type="Area2D" parent="."]
+position = Vector2( 800, 352 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Check0"]
+shape = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Check0"]
+modulate = Color( 0.560784, 0.792157, 0.560784, 1 )
+texture = ExtResource( 2 )
+
+[node name="grass3" type="StaticBody2D" parent="."]
+position = Vector2( 576, 480 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="grass3"]
+position = Vector2( -30, 0 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="grass3"]
+position = Vector2( 30, 0 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grass3"]
+scale = Vector2( 2, 1 )
+shape = SubResource( 3 )
+
+[node name="coin1" type="Area2D" parent="."]
+position = Vector2( 320, 352 )
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="coin1"]
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coin1"]
+shape = SubResource( 4 )
+
+[node name="coin2" type="Area2D" parent="."]
+position = Vector2( 576, 352 )
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="coin2"]
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coin2"]
+shape = SubResource( 4 )
+
+[node name="grass4" type="StaticBody2D" parent="."]
+position = Vector2( 768, 416 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="grass4"]
+position = Vector2( -30, 0 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="grass4"]
+position = Vector2( 30, 0 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grass4"]
+scale = Vector2( 2, 1 )
+shape = SubResource( 3 )
+
+[node name="grass5" type="StaticBody2D" parent="."]
+position = Vector2( 1760, 544 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="grass5"]
+position = Vector2( -64, 0 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="grass5"]
+texture = ExtResource( 4 )
+
+[node name="Sprite3" type="Sprite" parent="grass5"]
+position = Vector2( 64, 0.396851 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grass5"]
+position = Vector2( -0.00494385, 0.00814438 )
+scale = Vector2( 2, 3 )
+shape = SubResource( 2 )
+
+[node name="grass6" type="StaticBody2D" parent="."]
+position = Vector2( 1984, 480 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="grass6"]
+position = Vector2( -30, 0 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="grass6"]
+position = Vector2( 30, 0 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="grass6"]
+scale = Vector2( 2, 1 )
+shape = SubResource( 3 )
